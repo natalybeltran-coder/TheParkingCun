@@ -1,37 +1,17 @@
-<!DOCTYPE html>
-<html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Inicio de sesión</title>
-</head>
-<body>
-  <h2>Iniciar sesión (simulación)</h2>
-  <form id="formLogin">
-    <input type="email" id="correo" placeholder="Correo" required><br><br>
-    <input type="password" id="contrasena" placeholder="Contraseña" required><br><br>
-    <button type="submit">Ingresar</button>
-  </form>
-  <p id="mensaje" style="color:red;"></p>
+function cargar() {
+    const correo = document.getElementById("correo").value.trim();
+    const contrasena = document.getElementById("contraseña").value.trim();
 
-  <script>
-    document.getElementById("formLogin").addEventListener("submit", function(e) {
-      e.preventDefault();
+    // Credenciales válidas (puedes cambiarlas si quieres)
+    const usuarioValido = {
+        correo: "admin@parkingcun.com",
+        contrasena: "12345"
+    };
 
-      // Usuarios de prueba
-      const correo = document.getElementById("correo").value;
-      const contrasena = document.getElementById("contrasena").value;
-
-      if (
-        (correo === "admin@parkingcun.com" && contrasena === "12345") ||
-        (correo === "user@example.com" && contrasena === "password")
-      ) {
+    if (correo === usuarioValido.correo && contrasena === usuarioValido.contrasena) {
         alert("¡Inicio de sesión exitoso!");
-        window.location.href = "mapeo.html"; // redirige a otra página
-      } else {
-        document.getElementById("mensaje").textContent = "Correo o contraseña incorrectos.";
-      }
-    });
-  </script>
-</body>
-</html>
+        window.location.href = "mapeo.html"; // redirige si es correcto
+    } else {
+        alert("Datos erróneos. Intenta nuevamente.");
+    }
+}
